@@ -2,7 +2,6 @@ package com.przychocki.activedirectorybackend.controller;
 
 import com.przychocki.activedirectorybackend.dto.PlayerDTO;
 import com.przychocki.activedirectorybackend.dto.TeamDTO;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

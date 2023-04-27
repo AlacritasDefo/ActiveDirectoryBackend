@@ -1,6 +1,5 @@
 package com.przychocki.activedirectorybackend.dto;
 
-import com.nimbusds.jose.shaded.json.annotate.JsonIgnore;
 import lombok.*;
 
 @Data
