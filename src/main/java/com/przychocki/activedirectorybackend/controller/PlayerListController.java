@@ -2,6 +2,7 @@ package com.przychocki.activedirectorybackend.controller;
 
 import com.przychocki.activedirectorybackend.dto.PlayerDTO;
 import com.przychocki.activedirectorybackend.dto.TeamDTO;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,7 +10,6 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/")
-
 @RestController
 public class PlayerListController {
     private TeamDTO manchester = TeamDTO.builder().id(1).name("Manchester").build();
@@ -43,6 +43,7 @@ public class PlayerListController {
 
 
     @GetMapping(value = "player")
+    @PreAuthorize("hasAuthority('SCOPE_User.Read')")
     public List<PlayerDTO> getPlayers() {
         List<PlayerDTO> allPlayers = new ArrayList<>();
         allPlayers.addAll(MANCHESTER_PLAYERS);
@@ -51,6 +52,7 @@ public class PlayerListController {
     }
 
     @GetMapping("team")
+    @PreAuthorize("hasAuthority('SCOPE_User.Read')")
     public List<TeamDTO> allTeams() {
         List<TeamDTO> allTeams = new ArrayList<>();
         manchester.setPlayers(MANCHESTER_PLAYERS);
@@ -62,6 +64,7 @@ public class PlayerListController {
 
 
     @GetMapping("player/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_User.Read')")
     public PlayerDTO getPlayer(@PathVariable("id") int id) {
         List<PlayerDTO> allPlayers = new ArrayList<>();
         allPlayers.addAll(MANCHESTER_PLAYERS);
@@ -70,6 +73,7 @@ public class PlayerListController {
     }
 
     @GetMapping("team/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_User.Read')")
     public TeamDTO getTeam(@PathVariable("id") int id) {
         List<TeamDTO> allTeams = new ArrayList<>();
         manchester.setPlayers(MANCHESTER_PLAYERS);
